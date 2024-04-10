@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerador de EDI</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='styleindex.css') }}">
+   
+
+  
+</head>
+<body>
+    
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-md-6 offset-md-3 form-container">
+                <h1 class="text-center mb-4">Conversor de Planilha para EDI</h1>
+                <form action="/converter" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <input type="file" class="form-control-file" name="file" accept=".xlsx, .xls">
+                    </div>
+                    
+                    <!-- Select field for tipo_pedido -->
+                    <div class="form-group">
+                        <label for="tipo_pedido">Tipo de Pedido:</label>
+                        <select class="form-control" name="tipo_pedido" id="tipo_pedido">
+                            {% for tipo, codigo in tipos_pedido.items() %}
+                                <option value="{{ codigo }}">{{ tipo }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="gerar_pedido_checkbox">
+                            <input type="checkbox" id="gerar_pedido_checkbox" onchange="habilitarNumeroPedido()"> Tem um pedido para digitar?
+                        </label>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="numero_pedido">Número do Pedido:</label>
+                        <input type="text" class="form-control" name="numero_pedido" id="numero_pedido" disabled>
+                    </div>
+                    <div class="form-group">
+                        <label for="data_pedido">Data do Pedido:</label>
+                        <input type="date" class="form-control" name="data_pedido" id="data_pedido">
+                    </div>
+                    <div class="form-group">
+                        <label for="data_entrega">Data da Entrega:</label>
+                        <input type="date" class="form-control" name="data_entrega" id="data_entrega">
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-block">Converter</button>
+                    <a href="/diabrasil"><img src="/static/diasf.png" alt=""></a>
+                    
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        function habilitarNumeroPedido() {
+            var checkbox = document.getElementById("gerar_pedido_checkbox");
+            var numeroPedidoInput = document.getElementById("numero_pedido");
+            
+            if (checkbox.checked) {
+                numeroPedidoInput.disabled = false;
+            } else {
+                numeroPedidoInput.value = ''; // Limpa o valor do campo
+                numeroPedidoInput.disabled = true;
+            }
+        }
+        function formatarNumeroPedido() {
+            var input = document.getElementById('numero_pedido');
+            var numero_pedido = input.value;
+        
+            // Adiciona zeros à esquerda para completar 15 caracteres
+            while (numero_pedido.length < 15) {
+                numero_pedido = '0' + numero_pedido;
+            }
+        
+            // Limita o número a 15 caracteres
+            numero_pedido = numero_pedido.slice(0, 15);
+        
+            // Atualiza o valor do input
+            input.value = numero_pedido;
+        }
+        document.getElementById("btnAbrirPagina").addEventListener("click", function() {
+            // Abrir a outra página
+            window.location.href = "diabrasil.html";
+          });
+    </script>
+</body>
+</html>

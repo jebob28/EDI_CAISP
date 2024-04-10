@@ -1,0 +1,33 @@
+body {
+    background-image: url('/static/caisp.jpg'); /* Caminho da imagem de fundo */
+    background-size: cover; /* Dimensiona a imagem para caber dentro da área */
+    background-repeat: no-repeat; /* Evita repetição da imagem */
+    background-position: center;
+}
+.form-container {
+
+    background-color: rgba(241, 241, 241, 0.8);
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Shadow effect */
+    padding: 30px; /* Padding inside the container */
+}
+
+.btn-primary {
+    background-color: #065a2a; /* Blue button color */
+    border-color: #05491f; /* Blue border color */
+}
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    border-color: #0056b3; /* Darker blue border on hover */
+}
+a{
+    color: #05491f;
+    font-weight: bold;
+}
+a:hover{
+    color: aliceblue;
+}
+img{
+    width: 100px;
+    height: 60px;
+}

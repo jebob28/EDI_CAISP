@@ -1,0 +1,29 @@
+body {
+        background-image: url('/static/dia.png'); /* Caminho da imagem de fundo */
+        background-size: cover; /* Dimensiona a imagem para caber dentro da área */
+        background-repeat: no-repeat; /* Evita repetição da imagem */
+        background-position: center;
+}
+.form-container {
+    
+    background-color: rgba(241, 241, 241, 0.8); /* Cor de fundo com transparência */
+    border-radius: 10px; /* Cantos arredondados */
+    box-shadow: 0 4px 6px rgba(244, 237, 237, 0.1); /* Efeito de sombra */
+    padding: 30px; /* Preenchimento dentro do container */
+}
+
+.btn-primary {
+    background-color: #bb3e30; /* Blue button color */
+    border-color: #bb3e30; /* Blue border color */
+}
+.btn-primary:hover {
+    background-color: #0056b3; /* Darker blue on hover */
+    border-color: #0056b3; /* Darker blue border on hover */
+}
+a{
+    color: #bb3e30;
+    font-weight: bold;
+}
+a:hover{
+    color: aliceblue;
+}
